@@ -1,6 +1,8 @@
 # ravi
 IN case the system has no opencv installed - just run the script with prior having a look to its content.
-then test the binary with the axample below
+then test the binary with the example below, otherwise first run purge: 
+
+sudo apt-get purge libopencv*
 
 HOW TO INSTALL
 
