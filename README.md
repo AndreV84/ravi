@@ -15,7 +15,7 @@ cd ravi
 
 HOW TO RUN
 
-cd 
+cd /opencv/build/bin
 
-/opencv/build/bin$ ./example_aruco_create_board -w=5 -h=7 -l=100 -s=10 -d=10 aboard.png
+./example_aruco_create_board -w=5 -h=7 -l=100 -s=10 -d=10 aboard.png
 
