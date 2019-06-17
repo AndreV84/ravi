@@ -1,0 +1,21 @@
+import sys
+import cv2
+from cv2 import aruco
+
+aruco_dict = aruco.getPredefinedDictionary(aruco.DICT_6X6_250)
+parameters = aruco.DetectorParameters_create()
+gst = "rtspsrc location=rtsp://192.168.1.3:8554/test ! queue ! decodebin ! videoconvert ! appsink"
+
+cap = cv2.VideoCapture(gst, cv2.CAP_GSTREAMER)
+
+while True:
+    ret, frame = cap.read()
+    corners, ids, _ = aruco.detectMarkers(image=frame, dictionary=aruco_dict, parameters=parameters)
+    if ids is not None:
+        cv2.putText(frame, str(ids.T), (20, 70), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+    cv2.imshow('image', frame)
+    if(cv2.waitKey(1) & 0xFF == ord('q')):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
